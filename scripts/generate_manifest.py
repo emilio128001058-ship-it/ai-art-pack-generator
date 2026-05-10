@@ -11,6 +11,7 @@ import hashlib
 import logging
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Optional
 
 PROJECT_ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
@@ -139,10 +140,6 @@ def generate_manifest(
     logger.info(f"Manifest saved: {manifest_path}")
 
     return manifest
-
-
-# Allow Optional import without adding it to sys.path issues
-from typing import Optional
 
 
 if __name__ == "__main__":

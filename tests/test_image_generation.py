@@ -114,8 +114,10 @@ class TestImageSaving(unittest.TestCase):
             self.assertTrue(output_path.exists())
 
     def test_save_image_returns_false_on_error(self):
-        invalid_path = Path("/nonexistent/readonly/path/test.png")
-        result = save_image(b"DATA", invalid_path)
+        # A regular file cannot be used as a parent directory — fails on any OS/user
+        with tempfile.NamedTemporaryFile(suffix=".txt") as f:
+            invalid_path = Path(f.name) / "subdir" / "test.png"
+            result = save_image(b"DATA", invalid_path)
         self.assertFalse(result)
 
 

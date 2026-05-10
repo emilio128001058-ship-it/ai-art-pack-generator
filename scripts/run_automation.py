@@ -127,6 +127,7 @@ def run_full_pipeline(
         if gen_result["generated"] == 0:
             raise RuntimeError("No images were generated successfully")
 
+        gen_result["success"] = gen_result["failed"] == 0
         actual_count = gen_result["generated"]
         run_result["image_count"] = actual_count
         logger.info(f"Generated {actual_count}/{image_count} images")
