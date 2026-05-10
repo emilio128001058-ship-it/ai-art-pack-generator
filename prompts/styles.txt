@@ -27,4 +27,7 @@ gold foil texture
 marble texture
 paper cutout style
 ink wash painting
-pixel art
+pixel art, 16-bit SNES style
+pixel art, 8-bit NES style
+pixel art, isometric retro game
+pixel art, RPG sprite style
