@@ -9,11 +9,8 @@ import datetime
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Stability AI DreamStudio default endpoint
-STABILITY_AI_URL = (
-    "https://api.stability.ai/v1/generation/"
-    "stable-diffusion-xl-1024-v1-0/text-to-image"
-)
+# Stability AI v2beta Core — ~3 credits/image (vs ~6 for SDXL v1)
+STABILITY_AI_URL = "https://api.stability.ai/v2beta/stable-image/generate/core"
 
 
 def load_list(relative_path):
@@ -78,22 +75,18 @@ def generate_images(dry_run=False):
                     f.write(_placeholder_png())
                 print(f"  [DRY RUN] wrote placeholder: {filename}")
             else:
-                payload = {
-                    "text_prompts": [{"text": prompt, "weight": 1}],
-                    "cfg_scale": 7,
-                    "height": 1024,
-                    "width": 1024,
-                    "steps": 30,
-                    "samples": 1,
-                }
                 headers = {
                     "Authorization": f"Bearer {api_key}",
-                    "Accept": "image/png",
-                    "Content-Type": "application/json",
+                    "Accept": "image/*",
+                }
+                data = {
+                    "prompt": prompt,
+                    "output_format": "png",
+                    "aspect_ratio": "1:1",
                 }
                 try:
                     response = requests.post(
-                        api_url, json=payload, headers=headers, timeout=60
+                        api_url, headers=headers, data=data, files={"none": ""}, timeout=60
                     )
                     response.raise_for_status()
                 except requests.RequestException as e:
