@@ -6,6 +6,7 @@
 secrets.json
 
 # Output (generated content, not source)
+output/*/
 output/**/*.png
 output/**/*.jpg
 output/**/*.jpeg
