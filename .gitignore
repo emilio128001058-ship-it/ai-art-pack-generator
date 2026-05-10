@@ -1,0 +1,71 @@
+# Environment & secrets
+.env
+.env.local
+.env.*.local
+*.key
+secrets.json
+
+# Output (generated content, not source)
+output/**/*.png
+output/**/*.jpg
+output/**/*.jpeg
+output/**/*.webp
+output/**/*.tiff
+output/**/*.bmp
+output/zips/*.zip
+!output/.keep
+!output/zips/.keep
+
+# Logs
+logs/*.log
+logs/*.json
+!logs/.keep
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+sdist/
+develop-eggs/
+.installed.cfg
+lib/
+lib64/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.virtualenv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+*.cover
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak

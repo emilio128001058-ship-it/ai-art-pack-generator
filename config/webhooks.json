@@ -1,0 +1,92 @@
+{
+  "_comment": "Store actual webhook URLs in .env file. These are template placeholders.",
+  "_instructions": "Replace placeholder URLs with real Zapier webhook URLs from your Zaps",
+
+  "zapier": {
+    "main_webhook": {
+      "url": "${ZAPIER_MAIN_WEBHOOK_URL}",
+      "description": "Primary webhook - triggers full distribution pipeline",
+      "method": "POST",
+      "content_type": "application/json",
+      "timeout_seconds": 30,
+      "retry_attempts": 3,
+      "active": true
+    },
+
+    "etsy_webhook": {
+      "url": "${ZAPIER_ETSY_WEBHOOK_URL}",
+      "description": "Creates draft listing on Etsy via Zapier",
+      "method": "POST",
+      "content_type": "application/json",
+      "timeout_seconds": 30,
+      "retry_attempts": 3,
+      "active": false,
+      "note": "Set active: true after connecting Etsy in Zapier"
+    },
+
+    "google_drive_webhook": {
+      "url": "${ZAPIER_GDRIVE_WEBHOOK_URL}",
+      "description": "Uploads ZIP to Google Drive via Zapier",
+      "method": "POST",
+      "content_type": "multipart/form-data",
+      "timeout_seconds": 120,
+      "retry_attempts": 3,
+      "active": false,
+      "note": "Set active: true after connecting Google Drive in Zapier"
+    },
+
+    "notion_webhook": {
+      "url": "${ZAPIER_NOTION_WEBHOOK_URL}",
+      "description": "Logs new pack to Notion product database",
+      "method": "POST",
+      "content_type": "application/json",
+      "timeout_seconds": 30,
+      "retry_attempts": 2,
+      "active": false
+    },
+
+    "email_notification": {
+      "url": "${ZAPIER_EMAIL_WEBHOOK_URL}",
+      "description": "Sends email summary after pack generation",
+      "method": "POST",
+      "content_type": "application/json",
+      "timeout_seconds": 15,
+      "retry_attempts": 2,
+      "active": false
+    }
+  },
+
+  "payload_schema": {
+    "_description": "Standard payload sent to all webhooks",
+    "fields": {
+      "pack_id": "string - UUID for this pack",
+      "theme": "string - theme name (e.g., cosmic_nebula)",
+      "style": "string - art style (e.g., watercolor)",
+      "image_count": "integer - number of images in pack",
+      "zip_filename": "string - name of zip file",
+      "zip_size_mb": "float - size of zip in MB",
+      "zip_base64": "string - base64 encoded zip (for small packs < 10MB)",
+      "gdrive_path": "string - intended Google Drive folder path",
+      "generated_at": "string - ISO 8601 datetime",
+
+      "seo": {
+        "etsy_title": "string - Etsy listing title (max 140 chars)",
+        "etsy_description": "string - full Etsy description",
+        "etsy_tags": "array[13] - Etsy tags (max 20 chars each)",
+        "etsy_price_usd": "float - suggested price",
+        "etsy_category": "string - Etsy category path",
+        "creative_market_title": "string - Creative Market title",
+        "creative_market_description": "string - Creative Market description",
+        "creative_market_keywords": "array[15] - keywords",
+        "adobe_stock_title": "string - Adobe Stock title (max 70 chars)",
+        "adobe_stock_keywords": "array[50] - Adobe Stock keywords",
+        "adobe_stock_category": "string - Adobe Stock category"
+      },
+
+      "preview_image_urls": "array - URLs to preview images (first 5)",
+      "manifest_url": "string - URL to manifest.json if hosted",
+      "run_id": "string - automation run identifier",
+      "success": "boolean - whether generation succeeded"
+    }
+  }
+}

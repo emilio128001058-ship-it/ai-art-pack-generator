@@ -1,0 +1,53 @@
+# SEO Keywords Database
+# Format: category|keywords (comma-separated)
+# Used for generating marketplace listings
+
+## Universal High-Value Keywords
+digital art,digital download,printable art,wall art,clip art,stock images
+commercial use,royalty free,instant download,high resolution,print ready
+background images,texture pack,art bundle,illustration set,design assets
+
+## Etsy Top-Performing Tags
+digital print,downloadable art,printable wall art,digital artwork,art print
+boho art,modern art,abstract art,nature art,fantasy art
+bedroom decor,office decor,home decor,nursery art,gallery wall
+birthday gift,gift for her,gift for him,unique gift,custom art
+watercolor print,minimalist art,bohemian decor,vintage art,retro art
+
+## Adobe Stock Keywords
+stock photography,stock illustration,vector art,concept art,background texture
+editorial use,commercial license,royalty-free stock,microstock,premium content
+AI generated art,digital illustration,graphic design,creative assets
+nature backgrounds,abstract backgrounds,technology backgrounds,business backgrounds
+
+## Creative Market Keywords
+design resources,design bundle,digital assets,creative bundle,graphic resources
+Photoshop assets,Canva templates,Procreate brushes,illustration pack
+brand assets,social media kit,marketing materials,presentation backgrounds
+
+## Style-Specific Keywords
+watercolor|watercolor art,watercolor painting,watercolor flowers,watercolor abstract,soft watercolor
+oil_painting|oil painting,traditional art,classical painting,fine art,painted texture
+cyberpunk|cyberpunk art,neon art,futuristic art,sci-fi art,dystopian art
+minimalist|minimalist design,clean design,simple art,flat design,modern minimal
+fantasy|fantasy art,magical art,mystical art,enchanted,fairy tale art
+botanical|botanical art,plant illustration,nature print,botanical print,floral art
+vintage|vintage art,retro design,antique illustration,old-fashioned,nostalgic art
+abstract|abstract art,modern abstract,geometric art,contemporary art,abstract shapes
+
+## Theme-Specific Keywords
+cosmic_nebula|space art,galaxy art,nebula art,cosmos art,universe art,starry night,astronomy art
+enchanted_forest|forest art,woodland art,fairy forest,magical forest,nature art,tree art
+underwater_kingdom|ocean art,mermaid art,sea art,underwater art,marine art,nautical art
+neon_city_night|city art,urban art,night city,neon lights,cyberpunk city,metropolitan art
+cherry_blossom_japan|Japanese art,sakura art,cherry blossom,Asian art,zen art,spring art
+gothic_cathedral|gothic art,dark art,cathedral art,medieval art,architectural art
+dragon_lair|dragon art,fantasy dragon,mythical creature,beast art,fire dragon
+arctic_aurora|aurora borealis,northern lights,winter art,arctic art,ice art,polar art
+
+## Long-Tail Keywords (High Converting)
+printable wall art set|5 piece art set,multiple prints,cohesive art set,matching art prints
+commercial license included|commercial rights,business use allowed,for resale,unlimited use
+instant digital download|immediate download,no shipping,digital file,downloadable
+high resolution files|4K resolution,print quality,large format print,poster size
+bundle discount|value pack,art collection,multiple designs,bulk download

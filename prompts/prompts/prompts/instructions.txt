@@ -1,7 +1,0 @@
-Generate 40–80 images per run.
-Use a mix of styles and themes.
-Organize images into folders by theme.
-Name files cleanly: theme_style_number.png
-Prepare a ZIP file for each theme.
-Return a manifest.json listing all images, prompts, and styles used.
-Ensure all images are high resolution (1024x1024 or higher).

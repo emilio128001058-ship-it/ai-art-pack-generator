@@ -1,0 +1,90 @@
+{
+  "version": "1.0.0",
+  "app_name": "AI Art Pack Generator",
+
+  "image_generation": {
+    "provider": "openai",
+    "model": "dall-e-3",
+    "fallback_provider": "stability",
+    "images_per_pack": {
+      "min": 40,
+      "max": 80,
+      "default": 50
+    },
+    "image_size": "1024x1024",
+    "image_sizes_varied": ["1024x1024", "1792x1024", "1024x1792"],
+    "quality": "hd",
+    "style": "vivid",
+    "output_format": "png",
+    "batch_size": 5,
+    "delay_between_batches_seconds": 2,
+    "retry_attempts": 3,
+    "retry_delay_seconds": 5
+  },
+
+  "output": {
+    "base_dir": "output",
+    "zips_dir": "output/zips",
+    "logs_dir": "logs",
+    "manifest_filename": "manifest.json",
+    "keep_originals_after_zip": false,
+    "max_zip_size_mb": 500
+  },
+
+  "seo": {
+    "title_max_chars": 140,
+    "description_min_words": 150,
+    "description_max_words": 500,
+    "etsy_tags_count": 13,
+    "etsy_tag_max_chars": 20,
+    "creative_market_keywords_count": 15,
+    "adobe_stock_keywords_count": 50,
+    "adobe_stock_keyword_max_chars": 70
+  },
+
+  "marketplace": {
+    "primary": "etsy",
+    "secondary": ["creative_market", "adobe_stock"],
+    "auto_publish": false,
+    "price_usd": {
+      "small_pack_10_images": 4.99,
+      "medium_pack_25_images": 9.99,
+      "large_pack_50_images": 14.99,
+      "mega_pack_75_plus": 24.99
+    },
+    "currency": "USD"
+  },
+
+  "google_drive": {
+    "enabled": true,
+    "upload_folder": "AI Art Packs",
+    "organize_by_date": true,
+    "organize_by_theme": true
+  },
+
+  "logging": {
+    "level": "INFO",
+    "log_to_file": true,
+    "log_filename": "logs/automation.log",
+    "max_log_size_mb": 10,
+    "backup_count": 5,
+    "log_format": "%(asctime)s | %(levelname)s | %(name)s | %(message)s"
+  },
+
+  "automation": {
+    "random_theme_selection": true,
+    "random_style_selection": true,
+    "max_themes_per_run": 1,
+    "send_to_zapier": true,
+    "cleanup_after_run": true,
+    "generate_manifest": true,
+    "notification_email": ""
+  },
+
+  "api_keys": {
+    "_comment": "Store actual keys in .env file, never in this config",
+    "openai": "${OPENAI_API_KEY}",
+    "stability_ai": "${STABILITY_API_KEY}",
+    "anthropic": "${ANTHROPIC_API_KEY}"
+  }
+}

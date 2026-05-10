@@ -1,0 +1,45 @@
+# Image Generation Instructions
+# These instructions guide the AI image generation process
+
+## Base Quality Instructions
+- Generate ultra-high resolution images suitable for commercial use
+- Ensure images are 4K quality (minimum 2048x2048 pixels)
+- Images must be unique, original, and commercially licensable
+- No copyrighted characters, logos, or trademarked content
+- No watermarks, signatures, or text overlays unless requested
+- Consistent style across all images in a pack
+
+## Composition Guidelines
+- Use rule of thirds for dynamic composition
+- Include both portrait and landscape orientations
+- Vary the zoom level: wide shots, medium shots, close-ups
+- Ensure proper lighting and shadow depth
+- Balance negative and positive space
+
+## Commercial Viability
+- Images should work as backgrounds, textures, or illustrations
+- Consider use cases: social media, presentations, print, web
+- Ensure images are versatile enough for multiple applications
+- Avoid overly busy compositions that reduce usability
+- Test visual balance at multiple sizes
+
+## Pack Consistency
+- Maintain consistent color palette across pack
+- Use unified mood and atmosphere
+- Ensure style consistency (same rendering technique)
+- Vary subjects while maintaining theme coherence
+- Include anchor images (hero shots) and supporting images
+
+## Technical Specifications
+- Aspect ratios: 1:1, 4:3, 16:9, 9:16 (portrait mobile)
+- Color space: sRGB for digital, CMYK-compatible for print
+- Format: PNG for transparency support, JPG for photos
+- File naming: {theme}_{style}_{number:03d}.{ext}
+- Minimum DPI: 300 for print, 72 for web
+
+## Prompt Enhancement Rules
+- Add lighting descriptors: "golden hour", "studio lighting", "dramatic shadows"
+- Add quality markers: "photorealistic", "highly detailed", "8k render", "masterpiece"
+- Add style reinforcement: "trending on ArtStation", "award-winning photography"
+- Specify camera/lens when applicable: "shot on Canon EOS R5", "35mm lens"
+- Include atmosphere: "cinematic", "ethereal", "moody", "vibrant"

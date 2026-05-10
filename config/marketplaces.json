@@ -1,0 +1,161 @@
+{
+  "marketplaces": {
+    "etsy": {
+      "enabled": true,
+      "name": "Etsy",
+      "type": "handmade_digital",
+      "listing_format": {
+        "title_max_chars": 140,
+        "description_max_chars": 2000,
+        "tags_count": 13,
+        "tag_max_chars": 20,
+        "images_per_listing": 10,
+        "price_format": "USD",
+        "shipping_profile": "digital_download"
+      },
+      "categories": {
+        "digital_art": "Art & Collectibles > Prints > Digital Prints",
+        "clip_art": "Craft Supplies & Tools > Patterns & How To > Clip Art",
+        "backgrounds": "Art & Collectibles > Photography > Digital",
+        "textures": "Craft Supplies & Tools > Digital"
+      },
+      "default_category": "Art & Collectibles > Prints > Digital Prints",
+      "policies": {
+        "instant_download": true,
+        "commercial_use": true,
+        "personal_use": true,
+        "resale": false
+      },
+      "seo_strategy": {
+        "front_load_keywords": true,
+        "include_style_in_title": true,
+        "include_use_case": true,
+        "example_title_format": "{theme} {style} Digital Art Pack | {count} High Resolution Images | Commercial Use | Instant Download"
+      }
+    },
+
+    "creative_market": {
+      "enabled": true,
+      "name": "Creative Market",
+      "type": "design_assets",
+      "listing_format": {
+        "title_max_chars": 100,
+        "description_max_chars": 3000,
+        "keywords_count": 15,
+        "keyword_max_chars": 50,
+        "preview_images": 8,
+        "file_formats": ["PNG", "JPG", "PDF"]
+      },
+      "categories": {
+        "illustrations": "Illustrations > Digital",
+        "graphics": "Graphics > Abstract",
+        "backgrounds": "Graphics > Backgrounds & Textures",
+        "patterns": "Patterns > Digital"
+      },
+      "default_category": "Graphics > Backgrounds & Textures",
+      "pricing_tiers": {
+        "starter": 9,
+        "standard": 19,
+        "premium": 39,
+        "extended": 79
+      },
+      "license_types": ["personal", "commercial", "extended_commercial"],
+      "seo_strategy": {
+        "use_descriptive_names": true,
+        "include_file_count": true,
+        "highlight_quality": true,
+        "example_title_format": "{count} {theme} {style} Background Images Bundle"
+      }
+    },
+
+    "adobe_stock": {
+      "enabled": true,
+      "name": "Adobe Stock",
+      "type": "stock_content",
+      "submission_format": {
+        "keywords_max": 50,
+        "keyword_max_chars": 70,
+        "title_max_chars": 70,
+        "description_max_chars": 200,
+        "min_resolution_px": 4000000,
+        "preferred_format": "JPEG",
+        "color_profile": "sRGB",
+        "dpi": 300
+      },
+      "content_types": [
+        "illustration",
+        "photo",
+        "vector",
+        "video",
+        "template"
+      ],
+      "categories": [
+        "Abstract",
+        "Animals/Wildlife",
+        "Arts/Entertainment",
+        "Backgrounds/Textures",
+        "Beauty/Fashion",
+        "Buildings/Landmarks",
+        "Business/Finance",
+        "Celebrities",
+        "Education",
+        "Food and Drink",
+        "Healthcare/Medical",
+        "Holidays",
+        "Industrial",
+        "Interiors",
+        "Miscellaneous",
+        "Nature",
+        "Objects",
+        "Parks/Outdoor",
+        "People",
+        "Religion",
+        "Science",
+        "Signs/Symbols",
+        "Sports/Recreation",
+        "Technology",
+        "Transportation",
+        "Travel/Locations",
+        "Vintage"
+      ],
+      "submission_requirements": {
+        "no_watermarks": true,
+        "no_logos": true,
+        "no_copyrighted_content": true,
+        "property_release_required": false,
+        "model_release_required": false,
+        "ai_disclosure_required": true
+      },
+      "seo_strategy": {
+        "descriptive_keywords_first": true,
+        "include_color_descriptors": true,
+        "include_mood_descriptors": true,
+        "avoid_subjective_terms": true,
+        "example_title_format": "{theme} {style} - {mood} {subject} background"
+      }
+    },
+
+    "shutterstock": {
+      "enabled": false,
+      "name": "Shutterstock",
+      "type": "stock_content",
+      "notes": "Enable after Adobe Stock is established"
+    },
+
+    "gumroad": {
+      "enabled": false,
+      "name": "Gumroad",
+      "type": "direct_sales",
+      "notes": "Enable for higher-margin direct sales"
+    }
+  },
+
+  "zapier_routing": {
+    "etsy": "create_etsy_draft_listing",
+    "creative_market": "upload_to_creative_market",
+    "adobe_stock": "submit_to_adobe_stock",
+    "google_drive": "upload_to_google_drive",
+    "notion": "log_to_notion_database",
+    "email": "send_summary_email"
+  }
+}
