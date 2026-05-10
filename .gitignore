@@ -1,0 +1,8 @@
+.env
+output/*
+!output/.keep
+logs/*
+!logs/.keep
+__pycache__/
+*.pyc
+*.pyo
