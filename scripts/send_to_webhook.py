@@ -6,14 +6,18 @@ import sys
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-def send_files(zip_files, manifest):
-    webhook_url = os.environ.get("ZAPIER_WEBHOOK_URL")
+def send_files(zip_files, manifest, dry_run=False):
+    if dry_run:
+        print("[DRY RUN] Would send these files to Zapier webhook:")
+        for z in zip_files:
+            print(f"  - {os.path.basename(z)}")
+        print("  - manifest.json")
+        print("[DRY RUN] Skipping actual HTTP POST.")
+        return
 
+    webhook_url = os.environ.get("ZAPIER_WEBHOOK_URL")
     if not webhook_url:
-        print(
-            "ERROR: ZAPIER_WEBHOOK_URL environment variable must be set",
-            file=sys.stderr,
-        )
+        print("ERROR: ZAPIER_WEBHOOK_URL environment variable must be set", file=sys.stderr)
         sys.exit(1)
 
     manifest_json = json.dumps(manifest)
@@ -35,7 +39,6 @@ def send_files(zip_files, manifest):
             except requests.RequestException as e:
                 print(f"  ERROR sending {os.path.basename(zip_file)}: {e}", file=sys.stderr)
 
-    # Send manifest.json as a standalone file for Zapier to reference
     manifest_path = os.path.join(REPO_ROOT, "output", "manifest.json")
     if os.path.exists(manifest_path):
         print("Sending manifest.json...")
@@ -43,15 +46,17 @@ def send_files(zip_files, manifest):
             files = {"file": ("manifest.json", f, "application/json")}
             try:
                 response = requests.post(webhook_url, files=files, timeout=30)
-                if response.ok:
-                    print("  OK: manifest.json")
-                else:
-                    print(f"  WARNING: manifest.json returned {response.status_code}", file=sys.stderr)
+                print(
+                    "  OK: manifest.json"
+                    if response.ok
+                    else f"  WARNING: manifest.json returned {response.status_code}"
+                )
             except requests.RequestException as e:
                 print(f"  ERROR sending manifest.json: {e}", file=sys.stderr)
 
 
 if __name__ == "__main__":
+    dry = os.environ.get("DRY_RUN", "").lower() in ("1", "true", "yes")
     output_dir = os.path.join(REPO_ROOT, "output")
     manifest_path = os.path.join(output_dir, "manifest.json")
 
@@ -69,7 +74,7 @@ if __name__ == "__main__":
     ]
 
     if not zip_files:
-        print("WARNING: No zip files found in output/. Run prepare_zip.py first.", file=sys.stderr)
+        print("WARNING: No zip files found. Run prepare_zip.py first.", file=sys.stderr)
         sys.exit(1)
 
-    send_files(zip_files, manifest)
+    send_files(zip_files, manifest, dry_run=dry)

@@ -2,12 +2,18 @@
 """
 Daily orchestrator: generates AI art packs, zips them, and sends to Zapier webhook.
 
-Required environment variables:
-  IMAGE_API_KEY       - API key for the image generation service
-  IMAGE_API_URL       - Endpoint URL for the image generation service
-  ZAPIER_WEBHOOK_URL  - Zapier catch webhook URL
+Required environment variables (not needed for dry runs):
+  IMAGE_API_KEY       - Stability AI (DreamStudio) API key
+  IMAGE_API_URL       - Image generation endpoint (defaults to DreamStudio SDXL)
+  ZAPIER_WEBHOOK_URL  - Zapier "Catch Hook" webhook URL
 
-Optional: create a .env file at the repo root and run_daily.sh will source it automatically.
+Optional:
+  DRY_RUN=1           - Skip real API calls; write placeholder PNGs and print
+                        what would be sent instead of posting to Zapier.
+
+Usage:
+  python3 run_daily.py              # live run
+  DRY_RUN=1 python3 run_daily.py   # dry run for testing the full pipeline
 """
 
 import os
@@ -17,6 +23,8 @@ import datetime
 
 REPO_ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(REPO_ROOT, "scripts"))
+
+DRY_RUN = os.environ.get("DRY_RUN", "").lower() in ("1", "true", "yes")
 
 
 def clean_output():
@@ -33,8 +41,9 @@ def clean_output():
 
 
 def run():
+    label = " [DRY RUN]" if DRY_RUN else ""
     print(f"\n{'='*60}")
-    print(f"AI Art Pack Generation — {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print(f"AI Art Pack Generation{label} — {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"{'='*60}\n")
 
     from generate_images import generate_images
@@ -42,19 +51,19 @@ def run():
     from send_to_webhook import send_files
 
     print("Step 1/4: Generating images...")
-    manifest = generate_images()
+    manifest = generate_images(dry_run=DRY_RUN)
 
     print("\nStep 2/4: Creating zip archives...")
     zip_files = zip_packs()
 
     print("\nStep 3/4: Sending to Zapier webhook...")
-    send_files(zip_files, manifest)
+    send_files(zip_files, manifest, dry_run=DRY_RUN)
 
     print("\nStep 4/4: Cleaning output folder...")
     clean_output()
 
     print(f"\n{'='*60}")
-    print("Run complete.")
+    print(f"Run complete{label}.")
     print(f"{'='*60}\n")
 
 
